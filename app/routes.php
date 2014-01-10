@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@index');
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
+Route::get('register', 'UsersController@create');
+Route::resource('users', 'UsersController');
+Route::resource('sessions', 'SessionsController', ['only' => ['index', 'create', 'destroy']]);
